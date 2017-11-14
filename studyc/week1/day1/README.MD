@@ -1,5 +1,5 @@
-## 姜文 1035465284 phone:18310349227
-## 全日制vue + 周末node
+
+
 ## react
 ## angular4 + ts typescript
 
