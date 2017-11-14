@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--以前 :拼接字符串innerHTML-->
+    <!--vue提供了一个指令 v-for 解决循环问题  更高效 会复用原有的解构-->
+    <!--要循环谁就在谁身上加v-for属性-->
+    <!--默认value in 数组 /(value,index) in 数组-->
+    <!--<ul>-->
+        <!--<li v-for="(fruit,index) in fruits">{{fruit.name}} {{index+1}}</li>-->
+        <!---->
+    <!--</ul>-->
+    <!--<ul>
+        <li>1.香蕉
+            <ul>
+                <li>1.1yellow</li>
+                <li>1.2green</li>
+            </ul>
+        </li>
+        <li>2.苹果
+            <ul>
+                <li>2.1yellow</li>
+                <li>2.2green</li>
+            </ul>
+        </li>
+    </ul>-->
+    <ul>
+        <li v-for="(fruit,index) in fruits">{{index+1}}.{{fruit.name}}
+            <ul>
+                <li v-for="(c,childIndex) in fruit.color">{{index+1}}.{{childIndex+1}}{{c}}</li>
+                <li></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div v-for="c in 'aaa'">{{c}}</div>
+    <div v-for="c in 6">{{c}}</div>
+    <div v-for="(value,key,index) in obj">{{key}}:{{value}}:{{index}}</div>
+
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            obj:{name:"zfpx",age:4,value:"xxx"},
+         fruits:[
+             {name:"香蕉",color:["yellow","green"]},
+             {name:"西瓜",color:["red","green","yellow"]},
+             {name:"苹果",color:["pink"]}]
+        }
+    })
+</script>
+</body>
+</html>

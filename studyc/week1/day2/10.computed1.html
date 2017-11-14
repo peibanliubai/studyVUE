@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    let vm=new Vue({
+
+        el:"#app",
+        computed:{
+         checkAll:{
+         get(){
+             return this.products
+                 .every(p=>p.isSelected);
+         },
+         set(val){
+             this.products.forEach(p=>p.isSelected=val);
+         }
+         },
+            sum(){
+             return this.products.reduce((prev,next)=>{
+                 if(!next.isSelected)return prev;
+                 return prev+next.productPrice*next.productCount;
+                },0)
+            }
+        },
+        filters:{
+            toFixed(input,param1){
+                return "$"+input.toFixed(param1);
+            }
+        },
+        created(){
+            this.getData();
+        },
+        methods:{
+            remove(){
+                ths.products=this.products.filter(item=>item!==p);
+            },
+            getData(){
+                axios.get('cart.json').then(res=>{
+                    this.products=res.data;},err=>{
+                    console.log(err);
+                })
+            }
+        },
+        data:{
+            products:[]
+        }
+    })
+</script>

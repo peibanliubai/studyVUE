@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--@事件.stop 阻止事件传播-->
+    <!--@事件.capture 捕获-->
+    <!--stopPropagation 阻止事件传播-->
+    <!--@事件.prevent 阻止事件默认行为-->
+    <!--@事件.once 事件只执行一次-->
+    <!--@事件.self 判断事件源绑定事件-->
+    <div @click="parent">parent
+        <div @click.capture="child">child
+            <div @click="grandson">grandson</div>
+        </div>
+    </div>
+</div>
+<script src="node/node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        methods:{
+          parent(){alert("parent")},
+            child(){alert("child")},
+            grandson(){alert("grandson")}
+        },
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>
