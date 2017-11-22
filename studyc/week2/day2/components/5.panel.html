@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div id="app">
+    <panel type="warning" @say-title="parent">
+        <div slot="title">这是一篇vue的使用</div>
+        <div slot="content">内容区
+        <p>组件的属性传递</p>
+            <p>slot的用法</p>
+            <p>ref的使用</p>
+            <p>nextTick的用法</p>
+        </div>
+        <div>作者:zfpx</div>
+    </panel>
+</div>
+<template id="panel">
+    <div class="panel" :class="[color]">
+        <div class="panel-heading" ref="head">
+            <slot name="title"></slot>
+        </div>
+        <div class="panel-body"><slot name="content"></slot></div>
+        <div class="panel-footer">
+            <slot>匿名</slot>
+            <button @click="say">点我戳标题</button>
+        </div>
+    </div>
+</template>
+<script src="../../node_modules/vue/dist/vue.js"></script>
+<script>
+    let panel={
+        template:'#panel',
+        methods:{
+            say(){
+                this.$emit('say-title',this.$refs.head.innerText)
+            }
+        },
+        computed:{
+            color(){
+                return 'panel-'+this.type
+            }
+        },
+        props:{
+            type:{//this.type='default'
+                type:[String],
+                default:'default'
+            }
+        }
+
+        };
+    let vm = new Vue({
+        el:'#app',
+        data:{},
+        methods:{
+          parent(tit){
+alert(tit)
+          }
+        },
+        components:{
+            panel,
+
+        }
+    })
+</script>
+</body>
+</html>

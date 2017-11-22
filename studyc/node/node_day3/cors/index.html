@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>珠峰培训 http://www.zhufengpeixun.cn</title>
+</head>
+<body>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.open('get','http://localhost:3000/clock',true);
+xhr.onload = function () {
+    console.log(xhr.response)
+}
+xhr.send();
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <!--不支持../路径-->
+    <link rel="stylesheet" href="index.css">
+    <style>
+        div{
+            text-align: center;
+            color: yellow;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div id="clock"></div>
+</body>
+</html>
+<script>
+
+    //跨域  :协议 端口号 域名  一个不一样是就是跨域
+    //fetch 基于promise
+    fetch("/clock",{method:"get"}).then(function () {
+        return res.json();//转成想要的类型 JSON.parse()
+    }).then(function (data) {
+        clock.innerHTML=data.time;
+    });
+   /* setInterval(()=>{
+        let xhr=new XMLHttpRequest();
+        xhr.open("get","/clock",true);
+        xhr.onload=function () {
+            if(this.status===200){
+                clock.innerHTML=xhr.response
+
+            }
+        };
+        xhr.send();
+    },1000);*/
+
+</script>

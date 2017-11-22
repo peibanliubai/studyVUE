@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/article/1">文章1</router-link>
+    <router-link to="/article/2">文章2</router-link>
+</div>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let Article={
+        template:'<div>这是第{{$route.params.sid}}篇文章</div>',
+        watch:{
+            $route(to,from){
+                let id=to.params.sid;
+                console.log(id);
+            }
+        }
+    };
+    let routes=[{path:'/article:sid',component:Article}];
+
+    let vm = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+</script>
+</body>
+</html>
